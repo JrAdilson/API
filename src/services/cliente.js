@@ -26,10 +26,10 @@ const deleteClientes = async(params) => {
 
 const sql_updateput = 
     `update clientes set 
-    nome = $2, 
-    sobrenome = $3, 
-    periodo = $4, 
-    observacao = $5 
+        nome = $2, 
+        cpfcnpj = $3, 
+        telefone = $4, 
+        endereco = $5 
     WHERE id = $1`
 const putClientes = async(params) => {
     const {id, nome, cpfcnpj, telefone, endereco} = params
