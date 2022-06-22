@@ -1,9 +1,9 @@
-const clienteController = require('../controllers/cliente')
+const fornecedorController = require('../controllers/fornecedor')
 
 module.exports = (app) => {
-    app.get('/cliente', clienteController.getClientes),
-    app.post('/cliente', clienteController.postClientes)
-    app.delete('/cliente/:id', clienteController.deleteClientes)
-    app.put('/cliente/:id', clienteController.putClientes)
-    app.patch('/cliente/:id', clienteController.patchClientes)
+    app.get('/fornecedor', fornecedorController.getFornecedor),
+    app.post('/fornecedor', fornecedorController.postFornecedor)
+    app.delete('/fornecedor/:id', fornecedorController.deleteFornecedor)
+    app.put('/fornecedor/:id', fornecedorController.putFornecedor)
+    app.patch('/fornecedor/:id', fornecedorController.patchFornecedor)
 }
