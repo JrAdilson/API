@@ -1,24 +1,12 @@
-const Clientes = require ('./cliente')
+const Cliente = require ('./cliente')
+const Fornecedor = require ('./fornecedor')
+const Estoque = require ('./estoque')
+const Produto = require ('./produto')
+const Venda = require ('./venda')
 module.exports = (app) => {
-    Clientes(app)
-}
-
-const Vendas = require('./vendas')
-module.exports = (app) => {
-    Vendas(app)
-}
-
-const Fornecedor = require('./fornecedor')
-module.exports = (app) => {
+    Cliente(app)
     Fornecedor(app)
-}
-
-const Produtos = require('./produtos')
-module.exports = (app) => {
-    Produtos(app)
-}
-
-const Estoque = require('./estoque')
-module.exports = (app) => {
     Estoque(app)
+    Produto(app)
+    Venda(app)
 }

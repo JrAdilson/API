@@ -1,7 +1,7 @@
 const db = require('../configs/pg')
 
 const sql_get = 
- `select id, qtd, local, ultentrada, observacao from estoque`
+ `select id, idProduto, qtd, local, tipoMov, observacao from estoque`
 const getEstoque = async () => {
     let estoque = {}
     await db.query(sql_get)
@@ -11,7 +11,7 @@ const getEstoque = async () => {
 }
 
 const sql_insert = 
-   `insert into estoque(id, qtd, local, ultentrada, observacao) values ($1, $2, $3, $4, $5)`
+   `insert into estoque(id, idProduto, qtd, local, tipoMov, observacao) values ($1, $2, $3, $4, $5, $6)`
 const postEstoque = async(params) => {
     const { id, qtd, local, ultentrada, observacao} = params
     await db.query(sql_insert, [id, qtd, local, ultentrada, observacao])
@@ -25,15 +25,16 @@ const deleteEstoque = async(params) => {
 }
 
 const sql_updateput = 
-    `update estoque set 
-    qtd = $2, 
-    local = $3, 
-    ultentrada = $4, 
-    observacao = $5 
+    `update estoque set
+    idProduto = $2, 
+    qtd = $3, 
+    local = $4, 
+    tipoMov = $5, 
+    observacao = $6 
     WHERE id = $1`
 const putEstoque = async(params) => {
-    const {id, qtd, local, ultentrada, observacao} = params
-    await db.query(sql_updateput, [id, qtd, local, ultentrada, observacao])
+    const {id, idProduto, qtd, local, tipoMov, observacao} = params
+    await db.query(sql_updateput, [id, idProduto, qtd, local, tipoMov, observacao])
 }
 
 const sql_updatepatch =
@@ -44,6 +45,11 @@ const patchEstoque = async(params) => {
     let binds = []
     binds.push(params.id)
     let countParams = 1
+    if(params.idProduto){
+        countParams++
+        fields += `Id do Produto = $${countParams}`
+        binds.push(params.idProduto)
+    }
     if(params.qtd){
         countParams++
         fields += `Quantidade suportada = $${countParams}`
@@ -54,10 +60,10 @@ const patchEstoque = async(params) => {
         fields += `local = $${countParams}`
         binds.push(params.local)
     }
-    if(params.ultentrada){
+    if(params.tipoMov){
         countParams++
-        fields += `Data ultima entrada = $${countParams}`
-        binds.push(params.ultentrada)
+        fields += `Tipo movimentacao = $${countParams}`
+        binds.push(params.tipoMov)
     }
     if(params.observacao){
         countParams++

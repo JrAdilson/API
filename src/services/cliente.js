@@ -1,45 +1,45 @@
 const db = require('../configs/pg')
 
 const sql_get = 
- `select id, nome, cpfcnpj, telefone, endereco from clientes`
-const getClientes = async () => {
+ `select id, nome, cpfcnpj, telefone, endereco from cliente`
+const getCliente = async () => {
     let cliente = {}
     await db.query(sql_get)
-    .then(ret => cliente = {total: ret.rows.length, clientes: ret.rows})
+    .then(ret => cliente = {total: ret.rows.length, cliente: ret.rows})
     .catch(err => cliente = err.stack)
     return cliente
 }
 
 const sql_insert = 
-   `insert into clientes(id,nome,cpfcnpj,telefone,endereco) values ($1, $2, $3, $4, $5)`
-const postClientes = async(params) => {
+   `insert into cliente(id,nome,cpfcnpj,telefone,endereco) values ($1, $2, $3, $4, $5)`
+const postCliente = async(params) => {
     const { id, nome, cpfcnpj, telefone, endereco} = params
     await db.query(sql_insert, [id, nome, cpfcnpj, telefone, endereco])
 }
 
 const sql_delete =
-    `delete from clientes WHERE id = $1`
-const deleteClientes = async(params) => {
+    `delete from cliente WHERE id = $1`
+const deleteCliente = async(params) => {
     const { id } = params
     await db.query(sql_delete, [id])
 }
 
 const sql_updateput = 
-    `update clientes set 
+    `update cliente set 
         nome = $2, 
         cpfcnpj = $3, 
         telefone = $4, 
         endereco = $5 
     WHERE id = $1`
-const putClientes = async(params) => {
+const putCliente = async(params) => {
     const {id, nome, cpfcnpj, telefone, endereco} = params
     await db.query(sql_updateput, [id, nome, cpfcnpj, telefone, endereco])
 }
 
 const sql_updatepatch =
-    `update clientes set
+    `update cliente set
     `
-const patchClientes = async(params) => {
+const patchCliente = async(params) => {
     let fields = ''
     let binds = []
     binds.push(params.id)
@@ -67,8 +67,8 @@ const patchClientes = async(params) => {
     let sql = sql_updatepatch + fields + ' where id = $1 '
     return await db.query(sql, binds)
 }
-module.exports.postClientes = postClientes
-module.exports.getClientes = getClientes
-module.exports.deleteClientes = deleteClientes
-module.exports.putClientes = putClientes
-module.exports.patchClientes = patchClientes
+module.exports.postCliente = postCliente
+module.exports.getCliente = getCliente
+module.exports.deleteCliente = deleteCliente
+module.exports.putCliente = putCliente
+module.exports.patchCliente = patchCliente

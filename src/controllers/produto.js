@@ -1,17 +1,17 @@
-let vendasService = require('../services/vendas')
+let produtoService = require('../services/produto')
 
-const getVendas = async (req, res, next) => {
+const getProduto = async (req, res, next) => {
     try{
-        await vendasService.getVendas()
+        await produtoService.getProduto()
         .then(ret => res.status(201).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err) {
         next(err)
     }
 }
-const postVendas = async(req, res, next) => {
+const postProduto = async(req, res, next) => {
     try{
-        await vendasService.postVendas(req.body)
+        await produtoService.postProduto(req.body)
         .then(ret => res.status(201).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -19,9 +19,9 @@ const postVendas = async(req, res, next) => {
     }
 }
 
-const deleteVendas = async(req, res, next) => {
+const deleteProduto = async(req, res, next) => {
     try{
-        await vendasService.deleteVendas(req.params)
+        await produtoService.deleteProduto(req.params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -29,11 +29,11 @@ const deleteVendas = async(req, res, next) => {
     }
 }
 
-const putVendas = async(req,res,next) => {
+const putProduto = async(req,res,next) => {
     try{
         let params = req.body
         params.id = req.params.id
-        await vendasService.putVendas(params)
+        await produtoService.putProduto(params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -41,19 +41,19 @@ const putVendas = async(req,res,next) => {
     }
 }
 
-const patchVendas = async(req,res,next) => {
+const patchProduto = async(req,res,next) => {
     try{
         let params = req.body
         params.id = req.params.id
-        await vendasService.patchVendas(params)
+        await produtoService.patchProduto(params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
         next(err)
     }
 }
-module.exports.postVendas = postVendas
-module.exports.getVendas = getVendas
-module.exports.deleteVendas = deleteVendas
-module.exports.putVendas = putVendas
-module.exports.patchVendas = patchVendas
+module.exports.postProduto = postProduto
+module.exports.getProduto = getProduto
+module.exports.deleteProduto = deleteProduto
+module.exports.putProduto = putProduto
+module.exports.patchProduto = patchProduto

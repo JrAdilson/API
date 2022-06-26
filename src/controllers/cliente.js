@@ -1,6 +1,6 @@
 let clienteService = require('../services/cliente')
 
-const getClientes = async (req, res, next) => {
+const getCliente = async (req, res, next) => {
     try{
         await clienteService.getCliente()
         .then(ret => res.status(201).send(ret))
@@ -9,9 +9,10 @@ const getClientes = async (req, res, next) => {
         next(err)
     }
 }
-const postClientes = async(req, res, next) => {
+
+const postCliente = async(req, res, next) => {
     try{
-        await clienteService.postClientes(req.body)
+        await clienteService.postCliente(req.body)
         .then(ret => res.status(201).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -19,9 +20,9 @@ const postClientes = async(req, res, next) => {
     }
 }
 
-const deleteClientes = async(req, res, next) => {
+const deleteCliente = async(req, res, next) => {
     try{
-        await clienteService.deleteClientes(req.params)
+        await clienteService.deleteCliente(req.params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -29,11 +30,11 @@ const deleteClientes = async(req, res, next) => {
     }
 }
 
-const putClientes = async(req,res,next) => {
+const putCliente = async(req,res,next) => {
     try{
         let params = req.body
         params.id = req.params.id
-        await clienteService.putClientes(params)
+        await clienteService.putCliente(params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
@@ -41,19 +42,19 @@ const putClientes = async(req,res,next) => {
     }
 }
 
-const patchClientes = async(req,res,next) => {
+const patchCliente = async(req,res,next) => {
     try{
         let params = req.body
         params.id = req.params.id
-        await clienteService.patchClientes(params)
+        await clienteService.patchCliente(params)
         .then(ret => res.status(204).send(ret))
         .catch(err => res.status(500).send(err))
     }catch(err){
         next(err)
     }
 }
-module.exports.postClientes = postClientes
-module.exports.getClientes = getClientes
-module.exports.deleteClientes = deleteClientes
-module.exports.putClientes = putClientes
-module.exports.patchClientes = patchClientes
+module.exports.postCliente = postCliente
+module.exports.getCliente = getCliente
+module.exports.deleteCliente = deleteCliente
+module.exports.putCliente = putCliente
+module.exports.patchCliente = patchCliente
