@@ -20,11 +20,15 @@
   "paths": {
     "/cliente": {
       "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Listagem de todos os clientes cadastrados",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Retorno de usuários bem sucessido."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -32,11 +36,15 @@
         }
       },
       "post": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Insere um novo cliente, com base nos parâmetros repassados.",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Cliente inserido com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -46,6 +54,10 @@
     },
     "/cliente/{id}": {
       "delete": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Deleta o cliente, baseado no id repassado.",
         "description": "",
         "parameters": [
           {
@@ -57,7 +69,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Cliente deletado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -65,6 +77,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Atualiza os dados de um cliente, com base nos parâmetros repassados.",
         "description": "",
         "parameters": [
           {
@@ -88,7 +104,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Campos dos clientes atualizados com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -96,6 +112,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Atualiza um dado de um cliente, específico, com base nos parâmetros repassados.",
         "description": "",
         "parameters": [
           {
@@ -119,7 +139,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Campo do cadastro do cliente alterado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -129,11 +149,15 @@
     },
     "/estoque": {
       "get": {
+        "tags": [
+          "Estoque"
+        ],
+        "summary": "Listagem de todos os estoques/quantidades de produtos cadastrados",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Consulta realizada com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -141,11 +165,15 @@
         }
       },
       "post": {
+        "tags": [
+          "Estoque"
+        ],
+        "summary": "Insere uma quantidade em estoque de um produto, com base nos parâmetros repassados.",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Quantidade de estoque do produto inserida com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -155,6 +183,10 @@
     },
     "/estoque/{id}": {
       "delete": {
+        "tags": [
+          "Estoque"
+        ],
+        "summary": "Deleta o estoque do produto, baseado no id repassado.",       
         "description": "",
         "parameters": [
           {
@@ -166,7 +198,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Quantidade em estoque do produto deletada com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -174,6 +206,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Estoque"
+        ],
+        "summary": "Atualiza os dados de estoque de um produto, com base nos parâmetros repassados.",
         "description": "",
         "parameters": [
           {
@@ -197,7 +233,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Quantidade, local e demais dados atualizados com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -205,6 +241,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Estoque"
+        ],
+        "summary": "Atualiza um dado de um produto, específico, com base nos parâmetros repassados.",        
         "description": "",
         "parameters": [
           {
@@ -228,7 +268,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Dado alterado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -238,11 +278,15 @@
     },
     "/fornecedor": {
       "get": {
+        "tags": [
+          "Fornecedor"
+        ],
+        "summary": "Consulta a lista de fornecedores já existentes.",        
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Listagem retornada com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -250,11 +294,15 @@
         }
       },
       "post": {
+        "tags": [
+          "Fornecedor"
+        ],
+        "summary": "Insere um fornecedor, com base nos parâmetros repassados.", 
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Fornecedor inserido com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -264,6 +312,10 @@
     },
     "/fornecedor/{id}": {
       "delete": {
+        "tags": [
+          "Fornecedor"
+        ],
+        "summary": "Deleta um fornecedor, com base no parâmetro repassado.", 
         "description": "",
         "parameters": [
           {
@@ -275,7 +327,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Fornecedor deletado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -283,6 +335,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Fornecedor"
+        ],
+        "summary": "Atualiza um fornecedor, com base nos parâmetros repassados.", 
         "description": "",
         "parameters": [
           {
@@ -306,7 +362,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Cadastro de fornecedores atualizado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -314,6 +370,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Fornecedor"
+        ],
+        "summary": "Alterado um dado, em específico, do fornecedor, com base no parâmetro repassado.", 
         "description": "",
         "parameters": [
           {
@@ -337,7 +397,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Conteúdo especificado alterado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -347,11 +407,15 @@
     },
     "/produto": {
       "get": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Listagem de todos os produtos cadastrados.", 
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Consulta realizada com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -359,11 +423,15 @@
         }
       },
       "post": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Insere um produto, com base nos parâmetros repassados",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Produto inserido com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -373,6 +441,10 @@
     },
     "/produto/{id}": {
       "delete": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Deleta um produto, com base no id repassado.",
         "description": "",
         "parameters": [
           {
@@ -384,7 +456,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Produto excluído com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -392,6 +464,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Atualiza os dados dos produtos, com base no parâmetro repassado",
         "description": "",
         "parameters": [
           {
@@ -415,7 +491,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Produto atualizado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -423,6 +499,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Atualiza um dado em específico do produto, com base no parâmetro repassado.",
         "description": "",
         "parameters": [
           {
@@ -446,7 +526,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Conteudo atualizado com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -456,11 +536,15 @@
     },
     "/venda": {
       "get": {
+        "tags": [
+          "Venda"
+        ],
+        "summary": "Listagem de todas as vendas cadastradas/realizadas.",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Consulta realizada com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -468,11 +552,15 @@
         }
       },
       "post": {
+        "tags": [
+          "Venda"
+        ],
+        "summary": "Insere uma nova venda, com base nos parametros repassados.",
         "description": "",
         "parameters": [],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Venda inserida com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -482,6 +570,10 @@
     },
     "/venda/{id}": {
       "delete": {
+        "tags": [
+          "Venda"
+        ],
+        "summary": "Deleta uma venda, com base no id repassado por parâmetro.",
         "description": "",
         "parameters": [
           {
@@ -493,7 +585,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Venda deletada com sucesso"
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -501,6 +593,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Venda"
+        ],
+        "summary": "Atualiza os dados da venda, com base nos parâmetros inseridos/atualizados.",
         "description": "",
         "parameters": [
           {
@@ -524,7 +620,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Venda atualizada com sucesso."
           },
           "500": {
             "description": "Erro Interno do Servidor"
@@ -532,6 +628,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Venda"
+        ],
+        "summary": "Atualiza um dado em específico da venda, com base nos parametros inseridos/repassados.",
         "description": "",
         "parameters": [
           {
@@ -555,7 +655,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Nenhum Conteúdo"
+            "description": "Venda atualizada"
           },
           "500": {
             "description": "Erro Interno do Servidor"
