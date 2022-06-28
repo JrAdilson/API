@@ -11,10 +11,10 @@ const getFornecedor = async () => {
 }
 
 const sql_insert = 
-   `insert into fornecedor(id,nome,cpfcnpj,telefone,endereco) values ($1, $2, $3, $4, $5)`
+   `insert into fornecedor(nome,cpfcnpj,telefone,endereco) values ($1, $2, $3, $4)`
 const postFornecedor = async(params) => {
-    const { id, nome, cpfcnpj, telefone, endereco} = params
-    await db.query(sql_insert, [id, nome, cpfcnpj, telefone, endereco])
+    const {nome, cpfcnpj, telefone, endereco} = params
+    await db.query(sql_insert, [nome, cpfcnpj, telefone, endereco])
 }
 
 const sql_delete =

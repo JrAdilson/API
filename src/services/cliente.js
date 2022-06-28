@@ -1,8 +1,7 @@
 const db = require('../configs/pg')
 
-const sql_get = 
- `select id, nome, cpfcnpj, telefone, endereco from cliente`
 const getCliente = async () => {
+    const sql_get = `select * from cliente`
     let cliente = {}
     await db.query(sql_get)
     .then(ret => cliente = {total: ret.rows.length, cliente: ret.rows})
@@ -10,22 +9,19 @@ const getCliente = async () => {
     return cliente
 }
 
-const sql_insert = 
-   `insert into cliente(id,nome,cpfcnpj,telefone,endereco) values ($1, $2, $3, $4, $5)`
 const postCliente = async(params) => {
-    const { id, nome, cpfcnpj, telefone, endereco} = params
-    await db.query(sql_insert, [id, nome, cpfcnpj, telefone, endereco])
+    const sql_insert = `insert into cliente(nome,cpfcnpj,telefone,endereco) values ($1,$2, $3, $4)`
+    const {nome, cpfcnpj, telefone, endereco} = params
+    await db.query(sql_insert, [nome, cpfcnpj, telefone, endereco])
 }
 
-const sql_delete =
-    `delete from cliente WHERE id = $1`
+const sql_delete = `delete from cliente WHERE id = $1`
 const deleteCliente = async(params) => {
     const { id } = params
     await db.query(sql_delete, [id])
 }
 
-const sql_updateput = 
-    `update cliente set 
+const sql_updateput = `update cliente set 
         nome = $2, 
         cpfcnpj = $3, 
         telefone = $4, 

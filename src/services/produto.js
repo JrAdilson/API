@@ -11,10 +11,10 @@ const getProduto = async () => {
 }
 
 const sql_insert = 
-   `insert into produto(id, nome, custo, venda, lote, observacao) values ($1, $2, $3, $4, $5)`
+   `insert into produto(nome, custo, venda, lote, observacao) values ($1, $2, $3, $4, $5)`
 const postProduto = async(params) => {
-    const { id, nome, custo, venda, lote, observacao} = params
-    await db.query(sql_insert, [id, nome, custo, venda, lote, observacao])
+    const {nome, custo, venda, lote, observacao} = params
+    await db.query(sql_insert, [nome, custo, venda, lote, observacao])
 }
 
 const sql_delete =

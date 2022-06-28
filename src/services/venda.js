@@ -1,7 +1,7 @@
 const db = require('../configs/pg')
 
 const sql_get = 
- `select id, mod, idCliente, idProd, tProd, tVal, obs from venda`
+ `select id, mod, idcliente, idprod, tprod, tval, obs from venda`
 const getVenda = async () => {
     let venda = {}
     await db.query(sql_get)
@@ -10,11 +10,10 @@ const getVenda = async () => {
     return venda
 }
 
-const sql_insert = 
-   `insert into venda(id, mod, idCliente, idProd, tProd, tVal, obs) values ($1, $2, $3, $4, $5, $6, $7)`
 const postVenda = async(params) => {
-    const {id, mod, idCliente, idProd, tProd, tVal, obs} = params
-    await db.query(sql_insert, [id, mod, idCliente, idProd, tProd, tVal, obs])
+    const sql_insert = `insert into venda(mod, idcliente, idprod, tprod, tval, obs) values ($1, $2, $3, $4, $5, $6)`
+    const {mod, idcliente, idprod, tprod, tval, obs} = params
+    await db.query(sql_insert, [mod, idcliente, idprod, tprod, tval, obs])
 }
 
 const sql_delete =
@@ -27,15 +26,15 @@ const deleteVenda = async(params) => {
 const sql_updateput = 
     `update venda set 
     mod = $2, 
-    idCliente = $3,
-    idProd = $4,
-    tProd = $5, 
-    tVal = $6, 
+    idcliente = $3,
+    idprod = $4,
+    tprod = $5, 
+    tval = $6, 
     obs = $7 
     WHERE id = $1`
 const putVenda = async(params) => {
-    const {id, mod, idCliente, idProd, tProd, tVal, obs} = params
-    await db.query(sql_updateput, [id, mod, idCliente, idProd, tProd, tVal, obs])
+    const {id, mod, idcliente, idprod, tprod, tval, obs} = params
+    await db.query(sql_updateput, [id, mod, idcliente, idprod, tprod, tval, obs])
 }
 
 const sql_updatepatch =
@@ -51,25 +50,25 @@ const patchVenda = async(params) => {
         fields += `modelo = $${countParams}`
         binds.push(params.mod)
     }
-    if(params.idCliente){
+    if(params.idcliente){
         countParams++
         fields += `Cliente = $${countParams}`
-        binds.push(params.idCliente)
+        binds.push(params.idcliente)
     }
-    if(params.idProd){
+    if(params.idprod){
         countParams++
         fields += `Produto = $${countParams}`
-        binds.push(params.idProd)
+        binds.push(params.idprod)
     }
-    if(params.tProd){
+    if(params.tprod){
         countParams++
         fields += `Total Produtos = $${countParams}`
-        binds.push(params.tProd)
+        binds.push(params.tprod)
     }
-    if(params.tVal){
+    if(params.tval){
         countParams++
         fields += `Total Venda = $${countParams}`
-        binds.push(params.tVal)
+        binds.push(params.tval)
     }
     if(params.obs){
         countParams++

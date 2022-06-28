@@ -1,7 +1,7 @@
 const db = require('../configs/pg')
 
 const sql_get = 
- `select id, idProduto, qtd, local, tipoMov, observacao from estoque`
+ `select id, idproduto, qtd, locals, tipomov, observacao from estoque`
 const getEstoque = async () => {
     let estoque = {}
     await db.query(sql_get)
@@ -11,10 +11,10 @@ const getEstoque = async () => {
 }
 
 const sql_insert = 
-   `insert into estoque(id, idProduto, qtd, local, tipoMov, observacao) values ($1, $2, $3, $4, $5, $6)`
+   `insert into estoque(idproduto, qtd, locals, tipomov, observacao) values ($1, $2, $3, $4, $5)`
 const postEstoque = async(params) => {
-    const { id, qtd, local, ultentrada, observacao} = params
-    await db.query(sql_insert, [id, qtd, local, ultentrada, observacao])
+    const {idproduto, qtd, locals, tipomov, observacao} = params
+    await db.query(sql_insert, [idproduto, qtd, locals, tipomov, observacao])
 }
 
 const sql_delete =
@@ -26,15 +26,15 @@ const deleteEstoque = async(params) => {
 
 const sql_updateput = 
     `update estoque set
-    idProduto = $2, 
+    idproduto = $2, 
     qtd = $3, 
-    local = $4, 
-    tipoMov = $5, 
+    locals = $4, 
+    tipomov = $5, 
     observacao = $6 
     WHERE id = $1`
 const putEstoque = async(params) => {
-    const {id, idProduto, qtd, local, tipoMov, observacao} = params
-    await db.query(sql_updateput, [id, idProduto, qtd, local, tipoMov, observacao])
+    const {id, idproduto, qtd, locals, tipomov, observacao} = params
+    await db.query(sql_updateput, [id, idproduto, qtd, locals, tipomov, observacao])
 }
 
 const sql_updatepatch =
@@ -45,25 +45,25 @@ const patchEstoque = async(params) => {
     let binds = []
     binds.push(params.id)
     let countParams = 1
-    if(params.idProduto){
+    if(params.idproduto){
         countParams++
         fields += `Id do Produto = $${countParams}`
-        binds.push(params.idProduto)
+        binds.push(params.idproduto)
     }
     if(params.qtd){
         countParams++
         fields += `Quantidade suportada = $${countParams}`
         binds.push(params.qtd)
     }
-    if(params.local){
+    if(params.locals){
         countParams++
-        fields += `local = $${countParams}`
-        binds.push(params.local)
+        fields += `locals = $${countParams}`
+        binds.push(params.locals)
     }
-    if(params.tipoMov){
+    if(params.tipomov){
         countParams++
         fields += `Tipo movimentacao = $${countParams}`
-        binds.push(params.tipoMov)
+        binds.push(params.tipomov)
     }
     if(params.observacao){
         countParams++
