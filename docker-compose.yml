@@ -1,0 +1,18 @@
+version: "3"
+services: 
+  api-ecommercio:
+    image: api-ecommercio
+    container_name: api-ecommercio
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db-ecommercio
+  db-horus:
+    image: db-ecommercio
+    container_name: db-ecommercio
+    environment:
+      ENV POSTGRES_USER: admin
+      ENV POSTGRES_PASSWORD: 123456
+      ENV POSTGRES_DB: ecommercio
+    ports:
+      - "5432:5432"

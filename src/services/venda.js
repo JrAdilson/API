@@ -47,32 +47,32 @@ const patchVenda = async(params) => {
     let countParams = 1
     if(params.mod){
         countParams++
-        fields += `modelo = $${countParams}`
+        fields += `mod = $${countParams}`
         binds.push(params.mod)
     }
     if(params.idcliente){
         countParams++
-        fields += `Cliente = $${countParams}`
+        fields += `idcliente = $${countParams}`
         binds.push(params.idcliente)
     }
     if(params.idprod){
         countParams++
-        fields += `Produto = $${countParams}`
+        fields += `idprod = $${countParams}`
         binds.push(params.idprod)
     }
     if(params.tprod){
         countParams++
-        fields += `Total Produtos = $${countParams}`
+        fields += `tprod = $${countParams}`
         binds.push(params.tprod)
     }
     if(params.tval){
         countParams++
-        fields += `Total Venda = $${countParams}`
+        fields += `tval = $${countParams}`
         binds.push(params.tval)
     }
     if(params.obs){
         countParams++
-        fields += `observacao = $${countParams}`
+        fields += `obs = $${countParams}`
         binds.push(params.obs)
     }
     let sql = sql_updatepatch + fields + ' where id = $1 '

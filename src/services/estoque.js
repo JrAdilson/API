@@ -47,12 +47,12 @@ const patchEstoque = async(params) => {
     let countParams = 1
     if(params.idproduto){
         countParams++
-        fields += `Id do Produto = $${countParams}`
+        fields += `idproduto = $${countParams}`
         binds.push(params.idproduto)
     }
     if(params.qtd){
         countParams++
-        fields += `Quantidade suportada = $${countParams}`
+        fields += `qtd = $${countParams}`
         binds.push(params.qtd)
     }
     if(params.locals){
@@ -62,12 +62,12 @@ const patchEstoque = async(params) => {
     }
     if(params.tipomov){
         countParams++
-        fields += `Tipo movimentacao = $${countParams}`
+        fields += `tipomov = $${countParams}`
         binds.push(params.tipomov)
     }
     if(params.observacao){
         countParams++
-        fields += `Observacao = $${countParams}`
+        fields += `observacao = $${countParams}`
         binds.push(params.observacao)
     }
     let sql = sql_updatepatch + fields + ' where id = $1 '
